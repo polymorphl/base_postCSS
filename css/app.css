@@ -1,7 +1,20 @@
+/*
+  #MODULES
+  - integration de base.css
+*/
 @import "modules/base";
 
+/*
+  #TYPOGRAPHIE
+  - font-size: responsive min-size max-size;
+*/
 body { font-size: responsive 21px 28px; }
 
-.one { background: url(../img/icons/one.png); }
+/*
+  #SpriteSystem
+  - Utilisation d'une image généré dans un sprite
 
+  <div class="one"></div>
+*/
+.one { background: url(../img/icons/one.png); }
 .one { color: red; }

@@ -5,7 +5,8 @@ var gulp        = require('gulp')
     postcss     = require('gulp-postcss'),
     rename      = require('gulp-rename'),
     browserSync = require('browser-sync'),
-    reload      = browserSync.reload;
+    reload      = browserSync.reload,
+    styledocco  = require('gulp-styledocco'); // Documentation System
 
 
 /*
@@ -13,6 +14,7 @@ var gulp        = require('gulp')
 */
 
 var conf = {
+  project_name: 'base',
   sprite: {
     cssPath: './css',
     imgPath: './img/sprite.png',
@@ -43,6 +45,7 @@ var conf = {
 */
 var processors = [
   require('precss'),
+  require('postcss-center'),
   require('postcss-sprites')({
     stylesheetPath: conf.sprite.cssPath,
     spritePath: conf.sprite.imgPath,
@@ -102,3 +105,17 @@ gulp.task('watch', function() {
 ** Describe the main task of gulp
 */
 gulp.task('default', ['css', 'browser-sync', 'watch']);
+
+gulp.task('docs', function () {
+  gulp.src(conf.css.mainFile)
+    .pipe(styledocco({
+      out: 'docs',
+      name: conf.project_name,
+      'include': [
+        'css/bundle.css',
+        'js/index.js'
+      ],
+      preprocessor: 'gulp css',
+      'no-minify': true
+    }));
+});
