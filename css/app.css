@@ -1,0 +1,7 @@
+@import "modules/base";
+
+body { font-size: responsive 21px 28px; }
+
+.one { background: url(../img/icons/one.png); }
+
+.one { color: red; }

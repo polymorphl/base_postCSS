@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  transform: translateX(30px);
+  font-size: responsive;
+
+  .container {
+    background-color: red;
+    .modal {
+      background-color: blue;
+    }
+  }
+}
