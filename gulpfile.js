@@ -9,7 +9,7 @@ var gulp        = require('gulp')
 
 
 /*
-** Project configuration
+** Configuration du projet
 */
 
 var conf = {
@@ -32,6 +32,11 @@ var conf = {
   },
   browserSyncBase: './',
 }
+
+/* ====================================================
+              ** Ne Pas modifier en dessous
+                ** Configuration GULP
+*  ==================================================== */
 
 /*
 ** Operations of the postCSS
