@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "angular": "^1.4.7",
+    "angular-animate": "^1.4.7",
+    "angular-aria": "^1.4.7",
+    "angular-material": "^0.11.4",
     "autoprefixer": "^6.0.3",
     "browser-sync": "^2.9.11",
     "css-mqpacker": "^4.0.0",
