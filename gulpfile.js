@@ -26,16 +26,16 @@ var conf = {
   },
   watchers: {
     e_css: true, //Enable CSS watching
-    css: 'css/**/*.css',
+    css: ['css/**/*.css'],
     e_html: true,
-    html: '*.html'
+    html: ['*.html']
   },
   browserSyncBase: './',
 }
 
 /* ====================================================
-              ** Ne Pas modifier en dessous
-                ** Configuration GULP
+** Ne Pas modifier en dessous
+** Configuration de GULP
 *  ==================================================== */
 
 /*
@@ -48,6 +48,7 @@ var processors = [
     spritePath: conf.sprite.imgPath,
     retina: conf.sprite.retina,
     outputDimensions: conf.sprite.oD,
+    verbose: true,
     filterBy: function(image) {
       return /icons/gi.test(image.url)
     } // sprite assets only in folder /icons/
@@ -65,7 +66,7 @@ var processors = [
 gulp.task('css', function(){
   gulp.src(conf.css.mainFile)
     .pipe(postcss(processors))
-    .pipe(rename(conf.css.newName))
+    .pipe(rename(conf.css.newFile))
     .pipe(gulp.dest(conf.css.DestFolder))
 });
 
@@ -81,17 +82,19 @@ gulp.task('browser-sync', function() {
 });
 
 /*
-** Watch task (CSS and HTML reloading)
+** Watch task (CSS/HTML injections)
 */
 gulp.task('watch', function() {
 
 	// Recharge les .css onChange
-  if (conf.watchers.e_css)
-	   gulp.watch(conf.watchers.css, ['css', browserSync.reload]);
+  if (conf.watchers.e_css) {
+	  gulp.watch(conf.watchers.css, ['css', browserSync.reload]);
+  }
 
-	// Recharge les .html onChange
-  if (conf.watchers.e_html)
+  // Recharge les .html onChange
+  if (conf.watchers.e_html) {
 	   gulp.watch(conf.watchers.html, browserSync.reload);
+  }
 
 });
 
